@@ -1,0 +1,48 @@
+/* Jungle-green theme for PrimateLM-audio (works in light and dark mode). */
+:root {
+  --md-primary-fg-color: #1b5e20;        /* deep forest green: header */
+  --md-primary-fg-color--light: #2e7d32;
+  --md-primary-fg-color--dark: #0d3b12;
+  --md-accent-fg-color: #66bb6a;         /* leaf green: hover/links */
+  --plm-card-bg: #f3f8f2;
+  --plm-update-border: #2e7d32;
+}
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #12321a;
+  --md-primary-fg-color--light: #1b5e20;
+  --md-primary-fg-color--dark: #0a1f0f;
+  --md-accent-fg-color: #81c784;
+  --md-typeset-a-color: #81c784;
+  --md-default-bg-color: #121712;
+  --plm-card-bg: #1a231b;
+  --plm-update-border: #81c784;
+}
+
+/* Row of resource links under the title (Code · Dataset · Model · Demo). */
+.resource-links { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; margin: -.4rem 0 1.6rem; }
+.resource-links p { display: contents; }
+.resource-links a { display: inline-flex; align-items: center; gap: .3rem; font-weight: 600; }
+.resource-links .sep { color: var(--md-default-fg-color--lighter); }
+
+/* Dated update entries. */
+.update-box { border-left: 3px solid var(--plm-update-border); background: var(--plm-card-bg);
+  padding: .5rem .8rem; margin: .5rem 0; border-radius: 0 6px 6px 0; }
+.update-date { display: inline-block; font-family: var(--md-code-font-family); font-size: .7rem;
+  font-weight: 700; margin-right: .5rem; opacity: .8; }
+
+/* Example cards (audio + spectrogram + label + prediction). */
+.example-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.example-card { background: var(--plm-card-bg); border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px; padding: .8rem; }
+.example-card img { width: 100%; border-radius: 6px; }
+.example-card audio { width: 100%; margin: .4rem 0; }
+.example-card .row { display: flex; justify-content: space-between; font-size: .7rem; }
+.example-card .ok { color: #2e7d32; font-weight: 700; }
+.example-card .bad { color: #c62828; font-weight: 700; }
+[data-md-color-scheme="slate"] .example-card .ok { color: #81c784; }
+[data-md-color-scheme="slate"] .example-card .bad { color: #ef9a9a; }
+
+/* Big call-to-action button (e.g. "Launch demo"). */
+.ext-btn { display: inline-block; padding: .55rem 1.1rem; border-radius: 8px; font-weight: 700;
+  background: var(--md-primary-fg-color); color: #fff !important; }
+.ext-btn:hover { background: var(--md-accent-fg-color); }

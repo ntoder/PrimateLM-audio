@@ -1,0 +1,4 @@
+# Docs site only (used by the GitHub Pages workflow). Pinned for reproducible builds.
+mkdocs==1.6.1
+mkdocs-material==9.8.2
+pymdown-extensions==13.1.2

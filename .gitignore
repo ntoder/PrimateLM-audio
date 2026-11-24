@@ -1,0 +1,13 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+# Built docs site
+site/
+# Raw audio and caches are downloaded by model/download_data.py — never commit them
+data/
+*.npz
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

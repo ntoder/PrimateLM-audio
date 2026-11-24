@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#2e7d32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- A leaf with a sound wave: primate calls in the forest -->
+  <path d="M10 54 C10 26 28 10 54 10 C54 36 38 54 10 54 Z"/>
+  <path d="M22 36 v4 M30 28 v20 M38 24 v16 M46 22 v8"/>
+</svg>
