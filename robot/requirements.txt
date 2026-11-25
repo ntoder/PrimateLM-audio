@@ -1,0 +1,5 @@
+# Raspberry Pi 4 (64-bit Raspberry Pi OS Bookworm, Python 3.11).
+# First install the system audio library:  sudo apt install -y libportaudio2
+-r ../requirements.txt
+sounddevice==0.5.6     # read the USB microphone
+paho-mqtt==2.2.0       # optional: publish detections over MQTT
