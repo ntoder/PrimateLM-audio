@@ -11,6 +11,10 @@
 
 <div class="update-box">
   <span class="update-date">2026-11-25</span>
+  The <a href="demo/">Interactive Demo</a> (Gradio: upload or record audio, spectrogram, top-3, detection timeline) and the <a href="robot/">Raspberry Pi live detector</a> (stdout, MQTT, HTTP) are ready. Both were tested on recordings; the Pi itself is next.
+</div>
+<div class="update-box">
+  <span class="update-date">2026-11-25</span>
   First model trained: YAMNet embeddings + a small MLP. On held-out recordings it labels <b>85% of clips correctly</b> (gibbon F1 0.82), and 80% in a forest it never heard. See <a href="how_it_works/#results">results</a> and <a href="examples/">examples</a>.
 </div>
 <div class="update-box">
