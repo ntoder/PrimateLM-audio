@@ -10,6 +10,10 @@
 ## Updates
 
 <div class="update-box">
+  <span class="update-date">2026-11-25</span>
+  First model trained: YAMNet embeddings + a small MLP. On held-out recordings it labels <b>85% of clips correctly</b> (gibbon F1 0.82), and 80% in a forest it never heard. See <a href="how_it_works/#results">results</a> and <a href="examples/">examples</a>.
+</div>
+<div class="update-box">
   <span class="update-date">2026-11-24</span>
   Project started. The docs site skeleton is up. Dataset download, training and the live demo are next — see <a href="https://github.com/ntoder/PrimateLM-audio/blob/main/PROGRESS.md">PROGRESS.md</a> for where we are.
 </div>

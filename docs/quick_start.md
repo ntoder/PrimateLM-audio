@@ -24,12 +24,13 @@ This downloads the openly licensed dataset into `data/` (which git ignores) and 
 
 ```bash
 python model/train.py
+python model/make_examples.py   # optional: rebuild the Examples page
 ```
 
-This computes YAMNet embeddings for every clip, trains the classifier, and writes:
+This computes YAMNet embeddings for every clip (about 3–4 minutes on a laptop CPU the first time; cached after that), trains the classifier, and writes:
 
 - `model/artifacts/classifier.joblib` — the trained classifier
-- `model/artifacts/eval_report.md` — accuracy, per-class F1
+- `model/artifacts/eval_report.md` — accuracy, per-class F1, false-alarm rates
 - `model/artifacts/confusion_matrix.png`
 
 ## 4. Run the demo
@@ -49,5 +50,8 @@ mkdocs serve
 
 Open <http://127.0.0.1:8000>.
 
-!!! note "Work in progress"
-    Steps 2–4 are being built now. Track progress in [PROGRESS.md](https://github.com/ntoder/PrimateLM-audio/blob/main/PROGRESS.md).
+## Try the command-line predictor
+
+```bash
+python model/predict.py demo/examples/01_gibbon.mp3
+```

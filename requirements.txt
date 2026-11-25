@@ -1,0 +1,10 @@
+# PrimateLM-audio: model training, CLI prediction and the Gradio demo.
+# Python 3.11. Pinned so everyone gets the same results.
+tensorflow==2.18.1        # runs YAMNet (CPU is fine)
+tf-keras==2.18.0          # Keras 2 API used by the YAMNet code
+numpy==2.0.2
+scipy==1.17.1             # resampling + spectrograms
+scikit-learn==1.9.1       # logistic regression / MLP classifier, metrics
+soundfile==0.14.0         # read/write WAV, FLAC, OGG, MP3
+matplotlib==3.11.2        # spectrograms and confusion matrices
+joblib==1.6.0             # save/load the trained classifier

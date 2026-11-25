@@ -18,6 +18,7 @@ SAMPLE_RATE = 16_000      # YAMNet expects 16,000 samples per second, mono
 WINDOW_SECONDS = 2.0      # the model looks at 2 seconds at a time
 HOP_SECONDS = 1.0         # sliding window step: 1 s = 50% overlap
 DETECTION_THRESHOLD = 0.6 # below this confidence we say "uncertain"
+MIN_WINDOWS_IN_A_ROW = 2  # a detection needs this many back-to-back windows (halves false alarms)
 
 # ---- Dataset -------------------------------------------------------------
 # Borneo loud-calls dataset, Clink & Hamid Ahmad, Zenodo, CC-BY-4.0.

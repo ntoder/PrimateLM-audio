@@ -57,4 +57,67 @@ Clips cut from the *same* original recording are kept in the same split where th
 - **F1 score (per class)** — balances *precision* (when it says "gibbon", how often is it right?) and *recall* (of all real gibbon clips, how many did it find?).
 - **Confusion matrix** — a grid showing, for each true class, what the model predicted. Mistakes are off the diagonal.
 
-Results are published on this page after training.
+## Results
+
+These numbers come straight from `model/artifacts/eval_report.md`, written by `python model/train.py`. They are **not** rounded up or cherry-picked.
+
+**Chosen classifier:** a small MLP (one hidden layer of 128 neurons). On the validation set it beat logistic regression (clip macro-F1 0.795 vs 0.766).
+
+### Test set — Danum Valley (same forest as training, different recordings)
+
+| Level | Accuracy | Macro-F1 |
+|---|---|---|
+| Per clip (average of its 2-s windows) | **0.848** | **0.723** |
+| Per 2-second window | 0.805 | 0.680 |
+
+| Class | Precision | Recall | F1 | Test clips |
+|---|---|---|---|---|
+| Northern grey gibbon (female) | 0.86 | 0.79 | **0.82** | 62 |
+| Great argus pheasant | 1.00 | 0.92 | **0.96** | 12 |
+| Helmeted hornbill | 0.62 | 0.50 | **0.56** | 10 |
+| Rhinoceros hornbill | 1.00 | 0.25 | **0.40** | 4 |
+| Background / no call | 0.84 | 0.92 | **0.88** | 116 |
+
+![Confusion matrix on the Danum Valley test set](assets/images/confusion_matrix.png)
+
+### Extra test — Maliau Basin (a different forest, a year later)
+
+The model never heard this forest. Only gibbon, rhinoceros hornbill and background clips exist here.
+
+| Level | Accuracy | Macro-F1 |
+|---|---|---|
+| Per clip | **0.804** | **0.821** |
+| Per 2-second window | 0.713 | 0.736 |
+
+| Class | Precision | Recall | F1 | Test clips |
+|---|---|---|---|---|
+| Northern grey gibbon | 0.86 | 0.75 | **0.81** | 110 |
+| Rhinoceros hornbill | 1.00 | 0.75 | **0.86** | 4 |
+| Background / no call | 0.75 | 0.86 | **0.80** | 95 |
+
+![Confusion matrix on the Maliau Basin test set](assets/images/confusion_matrix_maliau.png)
+
+### What the numbers tell us
+
+- **Gibbons are found most of the time (recall 0.75–0.79), and the model never confuses them with birds.** Its gibbon mistakes are all "background": usually quiet or distant calls.
+- **Hornbills are hard.** There are only 50 helmeted and 18 rhinoceros hornbill clips to learn from, and 4–10 to test on, so one mistake moves the score a lot.
+- **A new forest costs some accuracy, but not much** for gibbons (F1 0.82 → 0.81). Background is where it drops most: unfamiliar forest sounds get mistaken for calls more often.
+
+### False alarms — important for the robot
+
+A robot listens to background most of the time, so we measured how often a **background** window wrongly triggers a detection:
+
+| Test set | Threshold | False alarms (1 window) | False alarms (2 windows in a row) | Gibbon windows caught |
+|---|---|---|---|---|
+| Danum Valley | 0.6 | 9.3% | **4.6%** | 70.4% |
+| Danum Valley | 0.9 | 5.5% | 2.6% | 59.8% |
+| Maliau Basin | 0.6 | 20.0% | **9.9%** | 62.7% |
+| Maliau Basin | 0.9 | 10.7% | 4.7% | 48.8% |
+
+Requiring **two windows in a row** halves the false alarms, so the demo and robot do that by default (threshold 0.6). Raise the threshold if your robot reacts too often; lower it if it misses calls.
+
+### Ideas to improve it
+
+- Collect more hornbill (and more primate species) recordings.
+- Average *and* max-pool the YAMNet frames, or fine-tune a larger embedding model such as BEATs.
+- Add recordings from the robot's own microphone to training, so it learns that mic's sound.

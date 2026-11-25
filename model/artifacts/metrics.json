@@ -1,0 +1,374 @@
+{
+  "model_type": "mlp",
+  "dataset": {
+    "title": "A labelled dataset of the loud calls of four vertebrates collected using passive acoustic monitoring in Malaysian Borneo",
+    "creators": [
+      "Clink, Dena Jane",
+      "Hamid Ahmad, Abdul"
+    ],
+    "doi": "10.5281/zenodo.14213067",
+    "license": "cc-by-4.0",
+    "url": "https://zenodo.org/records/14213067"
+  },
+  "split_counts": {
+    "test": {
+      "gibbon": 62,
+      "great_argus": 12,
+      "helmeted_hornbill": 10,
+      "rhinoceros_hornbill": 4,
+      "background": 116
+    },
+    "val": {
+      "gibbon": 61,
+      "great_argus": 13,
+      "helmeted_hornbill": 10,
+      "rhinoceros_hornbill": 4,
+      "background": 115
+    },
+    "train": {
+      "gibbon": 310,
+      "great_argus": 62,
+      "helmeted_hornbill": 50,
+      "rhinoceros_hornbill": 18,
+      "background": 575
+    },
+    "maliau": {
+      "gibbon": 110,
+      "great_argus": 0,
+      "helmeted_hornbill": 0,
+      "rhinoceros_hornbill": 4,
+      "background": 95
+    }
+  },
+  "window_counts": {
+    "test": 1590,
+    "val": 1723,
+    "train": 8357,
+    "maliau": 1463
+  },
+  "validation": {
+    "logistic_regression": {
+      "window": {
+        "n": 1723,
+        "accuracy": 0.7544979686593152,
+        "macro_f1": 0.6699134113140472,
+        "per_class": {
+          "gibbon": {
+            "precision": 0.7785714285714286,
+            "recall": 0.7230514096185738,
+            "f1": 0.7497850386930353,
+            "support": 603
+          },
+          "great_argus": {
+            "precision": 0.392,
+            "recall": 0.47572815533980584,
+            "f1": 0.4298245614035088,
+            "support": 103
+          },
+          "helmeted_hornbill": {
+            "precision": 0.49107142857142855,
+            "recall": 0.873015873015873,
+            "f1": 0.6285714285714286,
+            "support": 63
+          },
+          "rhinoceros_hornbill": {
+            "precision": 0.8518518518518519,
+            "recall": 0.6388888888888888,
+            "f1": 0.7301587301587301,
+            "support": 36
+          },
+          "background": {
+            "precision": 0.8197997775305895,
+            "recall": 0.8028322440087146,
+            "f1": 0.8112272977435333,
+            "support": 918
+          }
+        }
+      },
+      "clip": {
+        "n": 203,
+        "accuracy": 0.8620689655172413,
+        "macro_f1": 0.7663177226813589,
+        "per_class": {
+          "gibbon": {
+            "precision": 0.8833333333333333,
+            "recall": 0.8688524590163934,
+            "f1": 0.8760330578512396,
+            "support": 61
+          },
+          "great_argus": {
+            "precision": 0.8571428571428571,
+            "recall": 0.46153846153846156,
+            "f1": 0.6,
+            "support": 13
+          },
+          "helmeted_hornbill": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "support": 10
+          },
+          "rhinoceros_hornbill": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 4
+          },
+          "background": {
+            "precision": 0.8739495798319328,
+            "recall": 0.9043478260869565,
+            "f1": 0.8888888888888888,
+            "support": 115
+          }
+        }
+      }
+    },
+    "mlp": {
+      "window": {
+        "n": 1723,
+        "accuracy": 0.7771329077190946,
+        "macro_f1": 0.6693567224481646,
+        "per_class": {
+          "gibbon": {
+            "precision": 0.7869718309859155,
+            "recall": 0.7412935323383084,
+            "f1": 0.7634500426985482,
+            "support": 603
+          },
+          "great_argus": {
+            "precision": 0.5483870967741935,
+            "recall": 0.3300970873786408,
+            "f1": 0.4121212121212121,
+            "support": 103
+          },
+          "helmeted_hornbill": {
+            "precision": 0.6,
+            "recall": 0.8095238095238095,
+            "f1": 0.6891891891891891,
+            "support": 63
+          },
+          "rhinoceros_hornbill": {
+            "precision": 0.9473684210526315,
+            "recall": 0.5,
+            "f1": 0.6545454545454545,
+            "support": 36
+          },
+          "background": {
+            "precision": 0.7977755308392316,
+            "recall": 0.8594771241830066,
+            "f1": 0.8274777136864184,
+            "support": 918
+          }
+        }
+      },
+      "clip": {
+        "n": 203,
+        "accuracy": 0.8719211822660099,
+        "macro_f1": 0.7946044757118178,
+        "per_class": {
+          "gibbon": {
+            "precision": 0.896551724137931,
+            "recall": 0.8524590163934426,
+            "f1": 0.8739495798319328,
+            "support": 61
+          },
+          "great_argus": {
+            "precision": 1.0,
+            "recall": 0.38461538461538464,
+            "f1": 0.5555555555555556,
+            "support": 13
+          },
+          "helmeted_hornbill": {
+            "precision": 0.6923076923076923,
+            "recall": 0.9,
+            "f1": 0.782608695652174,
+            "support": 10
+          },
+          "rhinoceros_hornbill": {
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.8571428571428571,
+            "support": 4
+          },
+          "background": {
+            "precision": 0.8709677419354839,
+            "recall": 0.9391304347826087,
+            "f1": 0.9037656903765691,
+            "support": 115
+          }
+        }
+      }
+    }
+  },
+  "test": {
+    "window": {
+      "n": 1590,
+      "accuracy": 0.8050314465408805,
+      "macro_f1": 0.679906107597339,
+      "per_class": {
+        "gibbon": {
+          "precision": 0.7917620137299771,
+          "recall": 0.7361702127659574,
+          "f1": 0.762954796030871,
+          "support": 470
+        },
+        "great_argus": {
+          "precision": 0.8272727272727273,
+          "recall": 0.674074074074074,
+          "f1": 0.7428571428571429,
+          "support": 135
+        },
+        "helmeted_hornbill": {
+          "precision": 0.7291666666666666,
+          "recall": 0.5737704918032787,
+          "f1": 0.6422018348623854,
+          "support": 61
+        },
+        "rhinoceros_hornbill": {
+          "precision": 0.8,
+          "recall": 0.26666666666666666,
+          "f1": 0.4,
+          "support": 30
+        },
+        "background": {
+          "precision": 0.8121827411167513,
+          "recall": 0.8948545861297539,
+          "f1": 0.8515167642362959,
+          "support": 894
+        }
+      }
+    },
+    "clip": {
+      "n": 204,
+      "accuracy": 0.8480392156862745,
+      "macro_f1": 0.7232530285329377,
+      "per_class": {
+        "gibbon": {
+          "precision": 0.8596491228070176,
+          "recall": 0.7903225806451613,
+          "f1": 0.8235294117647058,
+          "support": 62
+        },
+        "great_argus": {
+          "precision": 1.0,
+          "recall": 0.9166666666666666,
+          "f1": 0.9565217391304348,
+          "support": 12
+        },
+        "helmeted_hornbill": {
+          "precision": 0.625,
+          "recall": 0.5,
+          "f1": 0.5555555555555556,
+          "support": 10
+        },
+        "rhinoceros_hornbill": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "support": 4
+        },
+        "background": {
+          "precision": 0.84251968503937,
+          "recall": 0.9224137931034483,
+          "f1": 0.8806584362139918,
+          "support": 116
+        }
+      }
+    }
+  },
+  "maliau": {
+    "window": {
+      "n": 1463,
+      "accuracy": 0.7129186602870813,
+      "macro_f1": 0.7355255763347158,
+      "per_class": {
+        "gibbon": {
+          "precision": 0.783206106870229,
+          "recall": 0.6662337662337663,
+          "f1": 0.72,
+          "support": 770
+        },
+        "rhinoceros_hornbill": {
+          "precision": 0.9473684210526315,
+          "recall": 0.6428571428571429,
+          "f1": 0.7659574468085106,
+          "support": 28
+        },
+        "background": {
+          "precision": 0.6772486772486772,
+          "recall": 0.7699248120300752,
+          "f1": 0.7206192821956369,
+          "support": 665
+        }
+      }
+    },
+    "clip": {
+      "n": 209,
+      "accuracy": 0.8038277511961722,
+      "macro_f1": 0.8209893666204345,
+      "per_class": {
+        "gibbon": {
+          "precision": 0.8645833333333334,
+          "recall": 0.7545454545454545,
+          "f1": 0.8058252427184466,
+          "support": 110
+        },
+        "rhinoceros_hornbill": {
+          "precision": 1.0,
+          "recall": 0.75,
+          "f1": 0.8571428571428571,
+          "support": 4
+        },
+        "background": {
+          "precision": 0.7454545454545455,
+          "recall": 0.8631578947368421,
+          "f1": 0.8,
+          "support": 95
+        }
+      }
+    }
+  },
+  "false_alarms": {
+    "test": [
+      {
+        "threshold": 0.6,
+        "false_alarm_single": 0.09284116331096197,
+        "false_alarm_two_in_a_row": 0.04586129753914989,
+        "gibbon_window_recall": 0.7042553191489361
+      },
+      {
+        "threshold": 0.8,
+        "false_alarm_single": 0.06711409395973154,
+        "false_alarm_two_in_a_row": 0.03131991051454139,
+        "gibbon_window_recall": 0.6446808510638298
+      },
+      {
+        "threshold": 0.9,
+        "false_alarm_single": 0.05480984340044743,
+        "false_alarm_two_in_a_row": 0.025727069351230425,
+        "gibbon_window_recall": 0.597872340425532
+      }
+    ],
+    "maliau": [
+      {
+        "threshold": 0.6,
+        "false_alarm_single": 0.2,
+        "false_alarm_two_in_a_row": 0.09924812030075188,
+        "gibbon_window_recall": 0.6272727272727273
+      },
+      {
+        "threshold": 0.8,
+        "false_alarm_single": 0.13984962406015036,
+        "false_alarm_two_in_a_row": 0.061654135338345864,
+        "gibbon_window_recall": 0.5584415584415584
+      },
+      {
+        "threshold": 0.9,
+        "false_alarm_single": 0.10676691729323308,
+        "false_alarm_two_in_a_row": 0.04661654135338346,
+        "gibbon_window_recall": 0.4883116883116883
+      }
+    ]
+  },
+  "train_seconds": 10
+}
