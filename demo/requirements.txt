@@ -1,0 +1,3 @@
+# Everything the Gradio demo needs (also used as the Hugging Face Space's requirements).
+-r ../requirements.txt
+gradio==5.50.0

@@ -41,4 +41,5 @@ The confidence is the classifier's probability for its top label. It is **not** 
 
 - The model only knows the classes it was trained on. A howler monkey will be forced into one of the known classes or "background".
 - All training audio comes from one dataset, recorded with one type of recorder in one region. Accuracy on phone recordings or zoo recordings will likely be lower than the test-set numbers.
+- **MP3 compression changes the answer.** On one test gibbon clip the gibbon score dropped from 74% (original WAV) to 49% after saving it as a 16 kHz MP3. Use WAV or FLAC when you can.
 - 2-second windows can cut a call in half. Long calls are usually detected in at least one window.

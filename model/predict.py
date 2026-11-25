@@ -90,6 +90,8 @@ class PrimateClassifier:
            e.g. gibbon at 4-6 s and 5-7 s -> gibbon at 0:04-0:07.
         3. Throw away stretches made of fewer than `min_windows` windows. On our
            test set this halves false alarms on background audio.
+        4. Join surviving stretches of the same label that touch or overlap
+           (a one-window dip in the middle of a long call shouldn't split it in two).
         """
         runs: list[tuple[Detection, int]] = []   # (detection, number of windows in it)
         prev = None
@@ -104,7 +106,15 @@ class PrimateClassifier:
             elif keep:
                 runs.append((Detection(w.label, w.start, w.end, w.confidence), 1))
             prev = w if keep else None
-        return [d for d, n in runs if n >= min_windows]
+
+        merged: list[Detection] = []
+        for d in (d for d, n in runs if n >= min_windows):
+            if merged and merged[-1].label == d.label and d.start <= merged[-1].end:
+                merged[-1].end = max(merged[-1].end, d.end)
+                merged[-1].confidence = max(merged[-1].confidence, d.confidence)
+            else:
+                merged.append(d)
+        return merged
 
 
 def main() -> None:

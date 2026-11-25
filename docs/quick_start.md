@@ -53,5 +53,5 @@ Open <http://127.0.0.1:8000>.
 ## Try the command-line predictor
 
 ```bash
-python model/predict.py demo/examples/01_gibbon.mp3
+python model/predict.py demo/examples/01_gibbon.flac
 ```

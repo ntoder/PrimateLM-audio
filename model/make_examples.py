@@ -5,7 +5,7 @@ Run after training:
 
 For every class it takes the first clip the model got RIGHT and the first clip
 it got WRONG (if any) - no hand-picking. For each one it saves:
-  * a short MP3 (first 10 s) in docs/assets/examples/
+  * a short lossless FLAC (first 10 s; MP3 compression measurably changes the scores) in docs/assets/examples/
   * a spectrogram PNG
   * a card in docs/examples.md (between the EXAMPLES:START / END markers)
 The same clips are copied to demo/examples/ for the Gradio demo's example buttons.
@@ -60,8 +60,8 @@ def main() -> None:
         pred, conf = top3[0]
 
         stem = f"{len(cards) + 1:02d}_{true}"
-        sf.write(OUT_DIR / f"{stem}.mp3", wave, SAMPLE_RATE, format="MP3")
-        sf.write(DEMO_DIR / f"{stem}.mp3", wave, SAMPLE_RATE, format="MP3")
+        sf.write(OUT_DIR / f"{stem}.flac", wave, SAMPLE_RATE, format="FLAC")
+        sf.write(DEMO_DIR / f"{stem}.flac", wave, SAMPLE_RATE, format="FLAC")
         fig = spectrogram_figure(wave, height=2.2)
         fig.savefig(OUT_DIR / f"{stem}.png", dpi=90)
         plt.close(fig)
@@ -70,7 +70,7 @@ def main() -> None:
         others = " · ".join(f"{clf.nice(l).split(' (')[0]} {p:.0%}" for l, p in top3[1:])
         cards.append(f"""<div class="example-card">
   <img src="../assets/examples/{stem}.png" alt="Spectrogram of a {clf.nice(true)} clip" loading="lazy">
-  <audio controls preload="none" src="../assets/examples/{stem}.mp3"></audio>
+  <audio controls preload="none" src="../assets/examples/{stem}.flac"></audio>
   <div class="row"><span>True label</span><strong>{clf.nice(true)}</strong></div>
   <div class="row"><span>Prediction</span><span class="{'ok' if ok else 'bad'}">{clf.nice(pred)} {'✓' if ok else '✗'}</span></div>
   <div class="row"><span>Confidence</span><strong>{conf:.0%}</strong></div>
